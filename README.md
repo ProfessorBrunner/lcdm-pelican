@@ -1,7 +1,7 @@
 lcdm-pelican
 ============
 
-This is a custom pelican theme originally developed by Robert J. Brunner for the Laboratory for Cosmological Data Mining at the University of Illinois. The theme has a clickable image header, a sidebar with static information and list of links, and a common footer.
+This is a custom pelican theme originally developed by Robert J. Brunner for the [Laboratory for Cosmological Data Mining](http://lcdm.astro.illinois.edu) at the University of Illinois. The theme has a clickable image header, a sidebar with static information and list of links, and a common footer.
 
 Key points include:
 - Heirarchical page sturcture.
