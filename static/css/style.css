@@ -1,0 +1,165 @@
+/*
+Style Name: LCDM
+Style URI: http://lcdm.astro.illinois.edu
+Author: Robert J. Brunner
+Date: September, 2011 
+      December 16, 2013 (Last Modified)
+      Modified to work with Pelican & Jinja2
+*/
+
+/*
+ Note: I had made this a body tag but it was wiped out with the page content. 
+ So I converted to an html tag.
+*/
+
+html {
+	background-color: #d5d6d7 ;
+}
+
+body {
+	background-color: #d5d6d7 ;
+	font-size: 62.5%; /* Resets 1em to 10px */
+	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	color: #333;
+	text-align: center;
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+
+	
+.page {
+	background-color: white;
+	margin: 20px auto;
+	padding: 0;
+	width: 740px;
+	text-align: justify;
+	border: 1px solid #e7e7e7;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.content {
+	font-size: 1.2em;
+	float: left;
+	padding: 5px 0 20px 45px;
+	margin: 0px 0 0;
+	width: 450px;
+}
+
+
+/* Hanging Indent: Used forindenting second (or higher) lines in paragraph. */
+
+.hangindent {
+	padding-left: 30px;
+	text-indent: -30px;
+}
+
+.footer {
+    background: #e7e7e7 ;
+   	background-image: url(images/footer.png);
+	background-repeat: repeat-x; 
+	border-bottom: 1px solid #959596;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 0;
+#	margin: 0 auto;
+	width: 740px;
+	clear: both;
+}
+
+.sidebar {
+	background-color: #F9F9F9;
+	font: 1em 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	padding: 15px 0 10px 0;
+	margin-left: 550px;
+	width: 190px;
+}
+
+/* This only applies to paragraphs inside the footer */
+
+.footer p {
+	margin: 10px 0px 0px 0px;
+	padding: 15px 10px 5px;
+	text-align: left;
+}
+
+
+h1, h2, h3 {
+	font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	font-weight: bold;
+	}
+
+h1 {
+	font-size: 4em;
+	text-align: center;
+	}
+
+.sidebar h2 {
+	margin: 5px 0 0;
+	padding: 0;
+	font-family: 'Lucida Grande', Verdana, Sans-Serif;
+	font-size: 1.2em;
+	text-decoration: none;
+}
+
+/*
+.sidebar ul li:before {
+	content: "\00BB \0020";
+}
+*/
+
+.page ul {
+	margin: 5px;
+	padding: 0.1;
+	content: "\00BB \0020";
+	list-style-type: none;
+	list-style-image: none;
+}
+
+.sidebar ul {
+	margin: 5px;
+	padding: 0;
+	list-style-type: none;
+	list-style-image: none;
+}
+
+.sidebar li {
+	margin: 5px 0 0 0;
+	padding: 0;
+}
+
+
+code {
+	font: 1.1em 'Courier New', Courier, Fixed;
+}
+
+a, h2 a:hover, h3 a:hover {
+	color: #06c;
+	text-decoration: none;
+}
+
+a:hover, #clean a:hover {
+	color: #147;
+	text-decoration: underline;
+}
+
+img.alignleft {
+	padding: 0px;
+	margin: 1px 0px 0px 0px;
+	display: inline;
+}
+
+/* Not sure why I do not allow them (RJB 12/16/13 Removed)
+hr {
+	display: none;
+	}
+*/
+a img {
+	border: none;
+	}
+	
+#clean a {
+	text-decoration: none;
+	color: #000000;
+}
+

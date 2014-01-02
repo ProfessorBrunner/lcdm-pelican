@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="{{ DEFAULT_LANG }}">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        {% block head %}
+        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" media="screen" />
+        {% endblock head %}
+</head>
+
+{# Enable Latex in articles #}
+{% if article and article.latex %}
+    {{ article.latex }}
+{% endif %}
+
+{# Code for Google Analytics #}
+{# https://www.google.com/analytics/web/?et&authuser=0#management/Settings/a46756515w77812057p80447961/%3Fm.page%3DTrackingCode/ #}
+{# Could look at Piwik instead #}
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46756515-1', 'illinois.edu');
+  ga('send', 'pageview');
+
+</script>
+
+{# Now standard LCDM page #}
+<body class="page">
+    <header id="banner" class="body">
+        <a href="{{ SITEURL }}">
+            <img class='alignleft' width='740px' 
+                src="{{ SITEURL }}/theme/images/LCDM-logo.png" alt="LCDM" />
+        </a>
+    </header><!-- /#banner -->
+	<div class="content">
+        {% block content %}
+        {% endblock %}
+	</div><!-- content -->
+
+{# Include the sidebar code #}
+
+{% include "sidebar.html" %}
+
+{# Include the footer code #}
+
+{% include "footer.html" %}
+
+</body>
+
+</html>

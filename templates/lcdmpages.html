@@ -1,0 +1,57 @@
+{% extends "lcdmbase.html" %}
+
+{% block content %}
+
+<h2>{{ page.title }}</h2>
+{{ page.content }}     
+
+{# RJB: 12/31/2013
+
+We loop through all pages on the site to find those with a category
+equal to the current page slug. Since category is automatically derived
+by Pelican from the directory structure (since we leave the variable
+USE_FOLDER_AS_CATEGORY set to the default value of True. 
+
+Note, an
+alternative approach is to use variables defined in each page. This was
+my original approach, thus the presence of parent variables in some
+files. In this case, the loop should be 
+
+{% for mypage in pages if mypage.parent == page.slug  %}
+
+Finally, the Save_as tage must be defined within any page that will be
+included in a loop, or this approach will fail. 
+
+#}
+
+{# We loop over all pages to grab those that are in the right category #}
+
+{% for mypage in pages if mypage.category == page.slug  %}
+
+{# We need to initialize the HTML list #}
+
+{% if loop.first %}
+<hr />
+        <ul>
+{% endif %}
+
+{# Now we want to output summary information for each page #}
+            <li>
+                <h4><a href="{{ SITEURL }}/{{ mypage.save_as }}" rel="bookmark"
+                    title="Permalink to {{ mypage.title|striptags }}">
+                {{ mypage.title }}</a></h4>
+                {{ mypage.summary }}
+            </li>
+            
+{# Now close HTML list #}
+
+{% if loop.last %}
+        </ul>
+{% endif %}
+
+{% endfor %}
+
+{{ super() }}
+
+{% endblock content %}
+

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> Hello World! </h1
+
+{% for article in articles|sort %}
+
+{% if loop.first %}
+    <hr/>
+        <h2>{{ category }}</h2>
+        <ul>
+{% endif %}
+
+            <li>
+                <h4>{{ article.title }}: {{ article.date|strftime('%B %d,  %Y') }}</h4>
+                {{ article.content }}
+            </li>
+            
+{% if loop.last %}
+        </ul>
+{% endif %}
+
+{% endfor %}
+{% endblock content %}
+

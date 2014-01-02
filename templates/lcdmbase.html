@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{# We print out the page or article title as appropriate #}
+
+{% block title %}
+
+{{ super() }}:
+
+{% if page is defined %} {{ page.title }} {% else %} 
+{% if article is defined %} {{ article.title }} {% else %}
+{# Pages that do not exist, but are generated, have no explicit title attribute #}
+{% if mytitle %}{{ mytitle }} {% endif %} 
+{% endif %} {# else if #}
+{% endif %} {# if #}
+
+{% endblock title %}
+
+{# Now for the page/article content #}
+
+{% block content %}
+
+{# Note super() should be called after the child block contents are output. #}
+
+{# 
+
+The following include handles inserting under construction HTML code. We
+currently do not allow articles to be under construction. 
+
+#}
+
+{% if page and page.construction %}
+{% include "lcdmconstruct.html" %}
+{% endif %}
+
+{% endblock content %}
+

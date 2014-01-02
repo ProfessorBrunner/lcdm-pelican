@@ -1,0 +1,16 @@
+{# 
+This template is for a Pelican article that we treat as a page that
+has no child pages (like about.html or final research project or pages) 
+#}
+
+{% extends "lcdmbase.html" %}
+
+{% block content %}
+{# I now expect .md files to provide title directly, so the following line is superflous
+<h2>{{ page.title }}</h2>
+#}
+{{ page.content }}
+
+{{ super() }}
+
+{% endblock content %}

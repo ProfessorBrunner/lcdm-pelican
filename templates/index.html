@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+		<h2>The Laboratory for Cosmological Data Mining</h2>
+		<p>The Laboratory for Cosmological Data Mining was founded in 2002 
+		at the University of Illinois by Professor Robert J. Brunner to develop 
+		and apply computational technologies to extract cosmological information 
+		from the large astrophysical data sets being generated within our community.  
+		LCDM has been one of the top twenty users, worldwide of the production 
+		supercomputing resources at NCSA.
+		</p>
+
+ <h4> Students interested in joining the LCDM should contact Professor
+Brunner directly. </h4>
+
+{# If there are news pages more recent than 6 months, we display them #}
+
+{% for page in pages|sort(reverse=True, attribute='date') 
+    if page.date|recentNews(6) and page.category == 'news'%}
+
+{% if loop.first %}
+    <hr/>
+        <h2><a href="{{ SITEURL }}/news/index.html" rel="bookmark"
+                    title="Permalink to News">
+                    Recent News</a>
+        </h2>
+<ul>
+{% endif %}
+            <li>
+                <h4>{{ page.date|strftime('%B %d,  %Y') }}: 
+                <a href="{{ SITEURL }}/{{ page.url }}" rel="bookmark"
+                    title="Permalink to {{ page.title|striptags }}">
+                {{ page.title }}</a></h4>
+                {{ page.summary }}
+            </li>
+            
+{% if loop.last %}
+        </ul>
+{% endif %}
+
+{% endfor %}
+{% endblock content %}
+

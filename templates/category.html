@@ -1,0 +1,42 @@
+{# This file is used to process any category, which is simply just a
+   directory in the content directory. This should not actually be used as
+   I have defined teampltes for everything explicitly.
+#}
+
+{% extends "base.html" %}
+{% block content %}
+
+{# We loop through all articles in this category, but exclude those with
+a parent at the top level  #}
+
+{% for article in articles|sort if not article.parent %}
+
+{% if loop.first %}
+
+    <hr/>
+        <h2> {{ category }}</h2>
+        
+{% if category == "Research" %}
+
+LCDM research activities span several different areas, which currently
+include the following:
+
+{% endif %}
+        <ul>
+{% endif %}
+
+            <li>
+                <h4><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                    title="Permalink to {{ article.title|striptags }}">
+                    {{ article.title }}</a></h4>
+                    
+                {{ article.summary }}
+            </li>
+            
+{% if loop.last %}
+        </ul>
+{% endif %}
+
+{% endfor %}
+{% endblock content %}
+

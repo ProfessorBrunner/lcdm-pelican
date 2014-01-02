@@ -1,0 +1,43 @@
+{% extends "lcdmbase.html" %}
+
+{% block content %}
+
+<h2>{{ article.title }}</h2>
+{{ article.content }}     
+
+
+{# RJB: 12/31/2013
+
+ We loop over all pages in the research category to grab all topics 
+ 
+ #}
+
+{% for mypage in pages if mypage.category == article.category  %}
+
+{# We need to initialize the HTML list #}
+
+{% if loop.first %}
+<hr />
+        <ul>
+{% endif %}
+
+{# Now we want to output summary information for each page #}
+            <li>
+                <h4><a href="{{ SITEURL }}/{{ mypage.url }}" rel="bookmark"
+                    title="Permalink to {{ mypage.title|striptags }}">
+                {{ mypage.title }}</a></h4>
+                {{ mypage.summary }}
+            </li>
+            
+{# Now close HTML list #}
+
+{% if loop.last %}
+        </ul>
+{% endif %}
+
+{% endfor %}
+
+{{ super() }}
+
+{% endblock content %}
+

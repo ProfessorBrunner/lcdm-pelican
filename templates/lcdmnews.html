@@ -1,0 +1,47 @@
+{% set mytitle = "LCDM News" %}
+{% extends "lcdmbase.html" %}
+
+{% block content %}
+
+<h2>LCDM News</h2>
+
+{# RJB: 1/2/2014
+
+ We loop over all pages to grab all news pages 
+ 
+ #}
+
+{% for page in pages|sort if page.category == 'news' %}
+
+{# We need to initialize the HTML list #}
+
+{% if loop.first %}
+<hr />
+        <ul>
+{% endif %}
+
+{# Now we want to output summary information for each page #}
+            <li>
+                <h4><a href="{{ SITEURL }}/{{ page.url }}" rel="bookmark"
+                    title="Permalink to {{ page.title|striptags }}">
+                {{ page.title }}</a></h4>
+                {{ page.summary }}
+            </li>
+            
+{# Now close HTML list #}
+
+{% if loop.last %}
+        </ul>
+{% endif %}
+
+{% endfor %}
+
+{{ super() }}
+
+{# Some day will fix pagination 
+{% if articles_page and articles_paginator.num_pages > 1 %}
+{% include "lcdmpagination.html" %}
+{% endif %}
+#}
+
+{% endblock content %}
