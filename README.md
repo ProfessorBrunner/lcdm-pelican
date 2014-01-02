@@ -1,12 +1,12 @@
 lcdm-pelican
 ============
 
-This is a custom pelican theme originally developed for the Laboratory for Cosmological Data Mining at he University of Illinois. The theme has a clickable image header, a sidebar with static information and list of links, and a common footer.
+This is a custom pelican theme originally developed by Robert J. Brunner for the Laboratory for Cosmological Data Mining at the University of Illinois. The theme has a clickable image header, a sidebar with static information and list of links, and a common footer.
 
 Key points include:
-- Heriarchical page sturcture.
+- Heirarchical page sturcture.
 - Output has multiple page directories (handles by using Save_as tag.
 - Custom template for listing collection of pages by category
 - Custom template for listing homepage that mixes static and dynamic content.
 
-### Note: Ideally we could have multiple page directoires, but that requires a Pelican rewrite.
+Note: Currently all pages reside in the page directory, and all page save locations and URLs are handled via the Save_as tag, which is mandatory for all pages. Ideally, Pelican would support multiple page directories, but to implement this would require a modification to Pelican to accept and use a tuple (or list) of directories instead of a single directory in the PAGE_DIR attribute in the peliconconf.py file. but that requires a Pelican rewrite.
