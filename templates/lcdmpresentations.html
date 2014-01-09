@@ -2,17 +2,10 @@
 
 {% block content %}
 
-<h2>{{ article.title }}</h2>
-{{ article.content }}     
+<h2>{{ page.title }}</h2>
+{{ page.content }}     
 
-
-{# RJB: 12/31/2013
-
- We loop over all pages in the research category to grab all topics 
- 
- #}
-
-{% for mypage in pages if mypage.category == article.category  %}
+{% for mypage in pages|sort(reverse=True) if mypage.type == 'presentation' %}
 
 {# We need to initialize the HTML list #}
 
@@ -23,9 +16,14 @@
 
 {# Now we want to output summary information for each page #}
             <li>
-                <h4><a href="{{ SITEURL }}/{{ mypage.url }}" rel="bookmark"
+                <h4><a href="{{ SITEURL }}/{{ mypage.purl }}" rel="bookmark"
                     title="Permalink to {{ mypage.title|striptags }}">
                 {{ mypage.title }}</a></h4>
+                
+                <strong>Meeting</strong>: {{ mypage.meeting }} <br />
+                
+                <strong>Location</strong>: {{mypage.location }} <br />
+                
                 {{ mypage.summary }}
             </li>
             

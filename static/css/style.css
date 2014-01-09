@@ -3,8 +3,24 @@ Style Name: LCDM
 Style URI: http://lcdm.astro.illinois.edu
 Author: Robert J. Brunner
 Date: September, 2011 
-      December 16, 2013 (Last Modified)
+      December 16, 2013 ( Modified)
       Modified to work with Pelican & Jinja2
+      January 4, 2014 (Last Modified)
+      Added new LCDM classes.
+
+Note: There are special classes defined (via div tags):
+
+lcdmrefs          -> For Reference lists.
+lcdmprojects      -> for LCDM Project lists.
+lcdmpapers        -> For a list of LCDM papers.
+lcdmconstruct     -> For an Under construction LCDM message.
+lcdmcomment       -> For the LCDM comment section.
+
+These are in addition to page, content, sidebar, and footer classes.
+
+Finally, I created a hangindent class to make multiline paragraphs look
+better when put into lists. This is useful for people pages.
+
 */
 
 /*
@@ -39,13 +55,20 @@ body {
 }
 
 .content {
-	font-size: 1.2em;
+	font-size: 1.25em;
 	float: left;
 	padding: 5px 0 20px 45px;
 	margin: 0px 0 0;
 	width: 450px;
 }
 
+.lcdmprojects p {
+   display: inline;
+}
+
+.lcdmprojects li {
+   margin: 15px auto;
+}
 
 /* Hanging Indent: Used forindenting second (or higher) lines in paragraph. */
 

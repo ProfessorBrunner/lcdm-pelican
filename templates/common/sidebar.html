@@ -9,7 +9,9 @@
     		University of Illinois</p>
     	    <h2>Pages</h2>
                 {% for title, link in LCDM_PAGES %}
-			        <li><a href="{{ link }}">{{ title }}</a></li>
+			        <li><a href="{{ link }}">
+			        {{ title }}
+			        </a></li>
                 {% endfor %}
     	</ul>
 

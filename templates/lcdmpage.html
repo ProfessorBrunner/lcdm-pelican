@@ -11,6 +11,8 @@ has no child pages (like about.html or final research project or pages)
 #}
 {{ page.content }}
 
+{% include "common/lcdmreferences.html" %}
+
 {{ super() }}
 
 {% endblock content %}

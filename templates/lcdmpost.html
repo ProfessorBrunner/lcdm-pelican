@@ -11,11 +11,4 @@ has no child pages (like a news article or blog post)
 
 {{ super() }}
 
-{# Now we give the option for Discus comments on pages,
-   but only if article comments variable is defined #}
-
-{% if article and article.comments %}
-{% include "lcdmcomment.html" %}
-{% endif %}
-
 {% endblock content %}

@@ -1,0 +1,48 @@
+{% extends "lcdmbase.html" %}
+
+{# RJB 1/3/2014
+
+I have changed the layout of the LCDM site. I now want projects to have
+an introduction, followed by a list of sub-projects, followed by an
+optional background summary and page link. Other ideas include optional
+paper list (so it is clear what papers are related to what project), as
+well as a reference section.
+
+Photo-Z Page:
+Introductory Text:
+List of sub-projects (Somz, TPZ, PDFs, Combinations)
+Link to backgound page (with optional Summary). 
+List of References
+
+-----
+
+So this is done by putting introductory text in project page, which gets
+inserted via page.content
+
+Next we loop over all pages, grabbing all that have category = page.slug (e.g., photoz) 
+** and are type=project. These are listed with title hyperlinked and summary displayed.
+** and are type=background. This is displayed as title hyperlinked and summary displayed.
+** and are type=reference. This content is  inserted into current file via content tag.
+
+To speed things up, we can sort list of pages by type tag.
+
+#}
+
+{% block content %}
+
+<h2>{{ page.title }}</h2>
+{{ page.content }}     
+
+{% include "common/lcdmprojects.html" %}
+
+{# Background information #}
+
+{% include "common/lcdmbackground.html" %}
+{% include "common/lcdmpapers.html" %}
+
+{% include "common/lcdmreferences.html" %}
+
+{{ super() }}
+
+{% endblock content %}
+

@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 
-{# We print out the page or article title as appropriate #}
-
 {% block title %}
 
 {{ super() }}:
 
+{# We print out the page or article title as appropriate #}
 {% if page is defined %} {{ page.title }} {% else %} 
 {% if article is defined %} {{ article.title }} {% else %}
 {# Pages that do not exist, but are generated, have no explicit title attribute #}
@@ -23,13 +22,29 @@
 
 {# 
 
-The following include handles inserting under construction HTML code. We
-currently do not allow articles to be under construction. 
+We currently support two global items here:
+1) Inserting an "under construction" html code.
+2) Including comments.
+
+Both of these are enabled on a per page basis by defining the appropriate metadata:
+
+Construction: True
+Comments: True
 
 #}
 
+{# First handle under construction. Note only pages can be under
+construction, articles are assumed done when posted! #}
+
 {% if page and page.construction %}
-{% include "lcdmconstruct.html" %}
+{% include "common/lcdmconstruct.html" %}
+{% endif %}
+
+{# Second include Discus comment code (so they are at bottom of page).
+We allow either pages or articles to have comments #}
+
+{% if (page and page.comments) or (article and article.comments) %}
+{% include "common/lcdmcomment.html" %}
 {% endif %}
 
 {% endblock content %}

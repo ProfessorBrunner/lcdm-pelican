@@ -1,0 +1,22 @@
+{# 
+This template fragment prints out the list of references for
+a specific LCDM project. Note, this assumes the references
+are in a file in a directory with name matching the project slug
+metadata. In addition, the page has Type: references
+#}
+
+<div class="lcdmrefs">
+{% for mypage in pages 
+    if mypage.parent == page.slug and mypage.type == 'references' %}
+
+{# Test that only one page is recovered ? #}
+
+{# Now we want to output page references #}
+
+<h2>References</h2>
+    
+{{ mypage.summary }}
+
+{% endfor %}
+
+</div>

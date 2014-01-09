@@ -25,6 +25,7 @@
                 <h4><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
                     title="Permalink to {{ article.title|striptags }}">
                 {{ article.title }}</a></h4>
+                <strong> Posted: {{ article.date|strftime('%b %d,  %Y') }} </strong>
                 {{ article.summary }}
             </li>
             

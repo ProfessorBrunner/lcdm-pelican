@@ -1,0 +1,26 @@
+{# 
+This template fragment prints out the background information section for
+a specific LCDM project. Note, this assumes the background information
+is in a file in a directory with name matching the project slug
+metadata. In addition, the page has Type: background
+#}
+
+<div class="lcdmback">
+
+{% for mypage in pages 
+    if mypage.category == page.slug and mypage.type == 'background' %}
+
+{# Test that only one page is recovered ? #}
+
+{# Now we want to output summary information for background page #}
+
+<h2>Background Information</h2>
+    
+{{ mypage.summary }}
+
+<a href="{{ SITEURL }}/{{ mypage.save_as }}" rel="bookmark"
+    title="Permalink to {{ mypage.title|striptags }}">
+    <em>continue reading </em></a>
+{% endfor %}
+
+</div>

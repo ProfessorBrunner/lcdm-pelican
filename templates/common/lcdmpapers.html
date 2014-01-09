@@ -1,0 +1,43 @@
+{# 
+This template fragment prints out the list of relevant papers for a
+specific LCDM project. Note, this assumes the papers are files in a
+directory with name matching the project slug metadata. In addition, the
+page has Type: papers
+#}
+
+<div class="lcdmpapers">
+
+{# We loop over all pages to grab those that are in the right category #}
+
+{% for mypage in pages|sort(reverse=True, attribute='date')
+    if mypage.category == page.slug and mypage.type == 'paper' %}
+
+{# We need to initialize the HTML list #}
+
+{% if loop.first %}
+<hr />
+    <h2> Related LCDM Papers </h2>
+        <ul>
+{% endif %}
+
+{# Now we want to output summary information for each page #}
+            <li>
+                <h4><a href="{{ SITEURL }}/{{ mypage.save_as }}" rel="bookmark"
+                    title="Permalink to {{ mypage.title|striptags }}">
+                {{ mypage.title }}</a></h4>
+                {% if mypage.sdate %}
+                <em>Submitted</em>: {{ mypage.sdate | lcdmDateFormat }}
+                {% endif %}
+                {{ mypage.summary }}
+            </li>
+            
+{# Now close HTML list #}
+
+{% if loop.last %}
+        </ul>
+<hr />
+{% endif %}
+
+{% endfor %}
+
+</div>
