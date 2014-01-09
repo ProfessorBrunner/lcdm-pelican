@@ -9,14 +9,14 @@ information and list of links, and a common footer.
 
 Key points include:
 - Heirarchical page sturcture.
-- Output has multiple page directories (handles by using Save_as tag.
+- Output has multiple page directories (handled by using Save_as tag).
 - Custom template for listing collection of pages by category
 - Custom template for listing homepage that mixes static and dynamic content.
 
 ![LCDM Screenshot](/screenshot.png)
 
 Note: Currently all pages reside in the page directory, and all page
-save locations and URLs are handled via the _Save\_as_ tag, which is
+save locations and URLs are handled via the Save_as tag, which is
 mandatory for all pages. Ideally, Pelican would support multiple page
 directories, but to implement this would require a modification to
 Pelican to accept and use a tuple (or list) of directories instead of a
