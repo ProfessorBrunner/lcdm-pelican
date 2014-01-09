@@ -1,3 +1,6 @@
+{# We use the if test to prevent comments from being included when testing locally #}
+
+{% if COMMENTS %}
 <div class="lcdmcomment">
 
 {# 
@@ -41,3 +44,5 @@ comments in a post.
     }());
     </script>
 </div>
+
+{% endif %}

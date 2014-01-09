@@ -1,11 +1,16 @@
-{% extends "base.html" %}
-{% block title %}
-{{ super() }}
-<em> PAGE TITLE </em>
-{%endblock%}
-{% block content %}
-{{ super() }}
+{# 
+This template is for a Pelican article that we treat as a page that
+has no child pages (like about.html or final research project or pages) 
+#}
 
-<em>PAGE CONTENT </em>
+{% extends "base.html" %}
+
+{% block content %}
+
+{{ page.content }}
+
+{% include "common/list-references.html" %}
+
+{{ super() }}
 
 {% endblock %}

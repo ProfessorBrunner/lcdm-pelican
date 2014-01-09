@@ -1,11 +1,11 @@
-{% extends "lcdmbase.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
 <h2>{{ page.title }}</h2>
 {{ page.content }}     
 
-{% for mypage in pages|sort(reverse=True) if mypage.type == 'presentation' %}
+{% for mypage in pages|sort(reverse=True) if mypage.type == 'paper' %}
 
 {# We need to initialize the HTML list #}
 
@@ -16,14 +16,9 @@
 
 {# Now we want to output summary information for each page #}
             <li>
-                <h4><a href="{{ SITEURL }}/{{ mypage.purl }}" rel="bookmark"
+                <h4><a href="{{ SITEURL }}/{{ mypage.save_as }}" rel="bookmark"
                     title="Permalink to {{ mypage.title|striptags }}">
                 {{ mypage.title }}</a></h4>
-                
-                <strong>Meeting</strong>: {{ mypage.meeting }} <br />
-                
-                <strong>Location</strong>: {{mypage.location }} <br />
-                
                 {{ mypage.summary }}
             </li>
             

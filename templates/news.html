@@ -1,5 +1,5 @@
-{% set mytitle = "LCDM News" %}
-{% extends "lcdmbase.html" %}
+{% set mytitle = "News" %}
+{% extends "base.html" %}
 
 {% block content %}
 
@@ -38,7 +38,7 @@
 
 {{ super() }}
 
-{# Some day will fix pagination 
+{# TODO: Some day will fix pagination 
 {% if articles_page and articles_paginator.num_pages > 1 %}
 {% include "lcdmpagination.html" %}
 {% endif %}

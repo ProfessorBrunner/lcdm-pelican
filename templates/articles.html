@@ -1,26 +1,50 @@
+{% set mytitle = "Research Blog" %}
 {% extends "base.html" %}
+
+{# At the present time, the only articles we support are blog posts #}
 
 {% block content %}
 
-<h1> Hello World! </h1
+<h2>Research Blog Posts</h2>
 
-{% for article in articles|sort %}
+{# RJB: 12/31/2013
+
+ We loop over all articles to grab all posts 
+ 
+ #}
+
+{% for article in articles|sort if article.category == 'blog' %}
+
+{# We need to initialize the HTML list #}
 
 {% if loop.first %}
-    <hr/>
-        <h2>{{ category }}</h2>
+<hr />
         <ul>
 {% endif %}
 
+{# Now we want to output summary information for each article #}
             <li>
-                <h4>{{ article.title }}: {{ article.date|strftime('%B %d,  %Y') }}</h4>
-                {{ article.content }}
+                <h4><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                    title="Permalink to {{ article.title|striptags }}">
+                {{ article.title }}</a></h4>
+                <strong> Posted: {{ article.date|strftime('%b %d,  %Y') }} </strong>
+                {{ article.summary }}
             </li>
             
+{# Now close HTML list #}
+
 {% if loop.last %}
         </ul>
 {% endif %}
 
 {% endfor %}
-{% endblock content %}
 
+{# TODO: Some day I will fix pagination 
+{% if articles_page and articles_paginator.num_pages > 1 %}
+{% include "lcdmpagination.html" %}
+{% endif %}
+#}
+
+{{ super() }}
+
+{% endblock content %}

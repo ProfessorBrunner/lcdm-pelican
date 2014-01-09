@@ -5,11 +5,11 @@ are in a file in a directory with name matching the project slug
 metadata. In addition, the page has Type: references
 #}
 
-<div class="lcdmrefs">
+<div class="refs">
 {% for mypage in pages 
     if mypage.parent == page.slug and mypage.type == 'references' %}
 
-{# Test that only one page is recovered ? #}
+{# TODO: Test that only one page is recovered ? #}
 
 {# Now we want to output page references #}
 

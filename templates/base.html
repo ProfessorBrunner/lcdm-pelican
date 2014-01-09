@@ -4,33 +4,37 @@
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         {% block head %}
-        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        <title>
+        {% block title %}
+        {{ SITENAME }}:
+        {# We print out the page or article title as appropriate #}
+        {% if page is defined %} 
+            {{ page.title }} 
+        {% else %} 
+            {% if article is defined %} 
+                {{ article.title }} 
+            {% else %}
+        {# Pages that do not exist, but are generated, have no explicit title attribute #}
+                {% if mytitle %}{{ mytitle }} {% endif %} 
+            {% endif %} {# else if #}
+        {% endif %} {# if #}
+        {% endblock title %}
+        </title>
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" media="screen" />
         {% endblock head %}
 </head>
 
-{# Enable Latex in articles #}
+{# Not sure if this is really needed or not, so I comment it out for now.
 {% if article and article.latex %}
     {{ article.latex }}
 {% endif %}
+#}
 
-{# Code for Google Analytics #}
-{# https://www.google.com/analytics/web/?et&authuser=0#management/Settings/a46756515w77812057p80447961/%3Fm.page%3DTrackingCode/ #}
-{# Could look at Piwik instead #}
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46756515-1', 'illinois.edu');
-  ga('send', 'pageview');
-
-</script>
+{% include 'common/analytics.html' %}
 
 {# Now standard LCDM page #}
 <body class="page">
+
     <header id="banner" class="body">
         <a href="{{ SITEURL }}">
             <img class='alignleft' width='740px' 
@@ -39,16 +43,42 @@
     </header><!-- /#banner -->
 	<div class="content">
         {% block content %}
+        
+{# Note super() should be called after the child block contents are output. #}
+
+{# 
+
+We currently support two global items here:
+1) Inserting an "under construction" html code.
+2) Including comments.
+
+Both of these are enabled on a per page basis by defining the appropriate metadata:
+
+Construction: True
+Comments: True
+
+#}
+
+{# First handle under construction. Note only pages can be under
+construction, articles are assumed done when posted! #}
+
+{% if page and page.construction %}
+    {% include "common/construct.html" %}
+{% endif %}
+
+{# Second include Discus comment code (so they are at bottom of page).
+We allow either pages or articles to have comments #}
+
+{% if (page and page.comments) or (article and article.comments) %}
+    {% include "common/comments.html" %}
+{% endif %}
+
         {% endblock %}
 	</div><!-- content -->
 
-{# Include the sidebar code #}
+{% include 'common/sidebar.html' %}
 
-{% include "common/sidebar.html" %}
-
-{# Include the footer code #}
-
-{% include "common/footer.html" %}
+{% include 'common/footer.html' %}
 
 </body>
 

@@ -1,6 +1,15 @@
 {% extends "base.html" %}
+
+{# 
+This template is for a Pelican article that we treat as a post that
+has no child pages (like a news article or blog post)
+#}
+
 {% block content %}
 
+<h2>{{ article.title }}</h2>
 {{ article.content }}
+
+{{ super() }}
 
 {% endblock content %}
