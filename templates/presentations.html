@@ -8,7 +8,7 @@
 The following presentations are made publicly available by members of
 the LCDM.
 
-{% for mypage in pages|sort if mypage.type == 'presentation' %}
+{% for mypage in pages|sort(attribute='date', reverse=True) if mypage.type == 'presentation' %}
 
 {# We need to initialize the HTML list #}
 
