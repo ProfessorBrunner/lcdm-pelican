@@ -13,7 +13,7 @@ Key points include:
 - Custom template for listing collection of pages by category
 - Custom template for listing homepage that mixes static and dynamic content.
 
-![LCDM Screenshot](/screenshot.png)
+![LCDM Screenshot](screenshot.png)
 
 Note: Currently all pages reside in the page directory, and all page
 save locations and URLs are handled via the Save_as tag, which is
