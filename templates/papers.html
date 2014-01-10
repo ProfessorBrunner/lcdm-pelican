@@ -1,11 +1,12 @@
+{% set mytitle = "Papers" %}
 {% extends "base.html" %}
 
 {% block content %}
 
-<h2>{{ page.title }}</h2>
-{{ page.content }}     
+<h2>LCDM papers</h2>
+The following papers were published by members of the LCDM.
 
-{% for mypage in pages|sort(reverse=True) if mypage.type == 'paper' %}
+{% for mypage in pages|sort if mypage.type == 'paper' %}
 
 {# We need to initialize the HTML list #}
 
@@ -33,4 +34,3 @@
 {{ super() }}
 
 {% endblock content %}
-

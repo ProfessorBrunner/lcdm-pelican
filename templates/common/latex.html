@@ -1,0 +1,46 @@
+{# Note: I simply copied the javescript from the latex plugin. Since it
+seemed to only work with articles and I wanted it to work with all
+content #}
+
+{#
+
+Note: i tried to use Macros, but they don't work as written and I don't know why.
+
+\newcommand{\farcm}{\mbox{\ensuremath{.\mkern-4mu^\prime}}}%    % fractional arcminute symbol: 0.'0
+\newcommand{\farcs}{\mbox{\ensuremath{.\!\!^{\prime\prime}}}}%  % fractional arcsecond symbol: 0.''0
+\newcommand{\fdg}{\mbox{\ensuremath{.\!\!^\circ}}}%             % fractional degree symbol:     0.°0
+\newcommand{\arcdeg}{\ensuremath{^{\circ}}}%                    % degree symbol:  °
+
+{^{\\prime\\prime}}
+
+#}
+
+    <script type= "text/javascript">
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.src = 'https:' == document.location.protocol ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js' : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'; 
+        s[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" + 
+            "    config: ['MMLorHTML.js']," + 
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS','output/NativeMML']," +
+            "    TeX: { " +
+            "        extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js']," + 
+            "        equationNumbers: { autoNumber: 'AMS' }, " +
+            "        Macros: {" +
+            "            farcs: '\\mbox{\\ensuremath{.\\!\\!^{\\prime\\prime}}}'," +
+            "            fdg: '{.\\!\\!^\\\circ}}'," +
+            "            degr: '{^{\\\circ}}'" +
+            "        }," +
+            "    }," + 
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    tex2jax: { " +
+            "        inlineMath: [ [\'$\',\'$\'] ], " +
+            "        displayMath: [ [\'$$\',\'$$\'] ]," +
+            "        processEscapes: true }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax .mo, .MathJax .mi': {color: 'black ! important'}} " +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(s);
+    </script>
+

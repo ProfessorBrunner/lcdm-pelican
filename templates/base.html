@@ -21,14 +21,14 @@
         {% endblock title %}
         </title>
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" media="screen" />
-        {% endblock head %}
-</head>
 
-{# Not sure if this is really needed or not, so I comment it out for now.
-{% if article and article.latex %}
-    {{ article.latex }}
-{% endif %}
-#}
+        {# The following is required to enable Latex in either an article or a page #}
+        {% if (article and article.latex) or (page and page.latex) %}
+            {% include 'common/latex.html' %}
+        {% endif %}
+        {% endblock head %}
+
+</head>
 
 {% include 'common/analytics.html' %}
 

@@ -10,7 +10,7 @@ page has Type: papers
 {# We loop over all pages to grab those that are in the right category #}
 
 {% for mypage in pages|sort(reverse=True, attribute='date')
-    if mypage.category == page.slug and mypage.type == 'paper' %}
+    if mypage.parent == page.slug and mypage.type == 'paper' %}
 
 {# We need to initialize the HTML list #}
 

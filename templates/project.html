@@ -19,8 +19,8 @@ List of References
 So this is done by putting introductory text in project page, which gets
 inserted via page.content
 
-Next we loop over all pages, grabbing all that have category = page.slug (e.g., photoz) 
-** and are type=project. These are listed with title hyperlinked and summary displayed.
+Next we loop over all pages, grabbing all that have parent = page.slug (e.g., photoz) 
+** and are type=subproject. These are listed with title hyperlinked and summary displayed.
 ** and are type=background. This is displayed as title hyperlinked and summary displayed.
 ** and are type=reference. This content is  inserted into current file via content tag.
 
@@ -38,6 +38,7 @@ To speed things up, we can sort list of pages by type tag.
 {# Background information #}
 
 {% include "common/background.html" %}
+
 {% include "common/list-papers.html" %}
 
 {% include "common/list-references.html" %}

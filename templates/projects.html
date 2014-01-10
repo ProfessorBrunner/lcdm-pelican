@@ -1,9 +1,11 @@
+{% set mytitle = "Papers" %}
 {% extends "base.html" %}
-{% set current = 'research' %}
+
 {% block content %}
 
-<h2>{{ page.title }}</h2>
-{{ page.content }}     
+<h2>LCDM Research Projects</h2>
+
+The following research projects are currently active.
 
 {% for mypage in pages|sort(reverse=True) if mypage.type == 'project' %}
 
@@ -33,4 +35,3 @@
 {{ super() }}
 
 {% endblock content %}
-
