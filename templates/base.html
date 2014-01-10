@@ -1,3 +1,16 @@
+{# We print out the page or article title as appropriate #}
+{% if page is defined %} 
+    {% set theTitle = page.title %} 
+{% else %} 
+    {% if article is defined %} 
+    {% set theTitle = article.title %} 
+    {% else %}
+    {# Pages that do not exist, but are generated, have no explicit title attribute #}
+        {% if mytitle %}
+            {% set theTitle = mytitle %} 
+        {% endif %} 
+    {% endif %} {# else if #}
+{% endif %} {# if #}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="{{ DEFAULT_LANG }}">
@@ -6,18 +19,7 @@
         {% block head %}
         <title>
         {% block title %}
-        LCDM:
-        {# We print out the page or article title as appropriate #}
-        {% if page is defined %} 
-            {{ page.title }} 
-        {% else %} 
-            {% if article is defined %} 
-                {{ article.title }} 
-            {% else %}
-        {# Pages that do not exist, but are generated, have no explicit title attribute #}
-                {% if mytitle %}{{ mytitle }} {% endif %} 
-            {% endif %} {# else if #}
-        {% endif %} {# if #}
+        LCDM: {{ theTitle }}
         {% endblock title %}
         </title>
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" media="screen" />
