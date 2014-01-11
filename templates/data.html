@@ -1,0 +1,45 @@
+{% set mytitle = "Data Repository" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>LCDM Data Repository</h2>
+
+The following data products have been developed and published by
+members of the Laboratory for Cosmological Data Mining.
+ 
+{# We loop over all pages to grab those that are in the right category #}
+
+{% for mypage in pages|sort(attribute='date', reverse=True) if mypage.category == 'data' %}
+
+{# We need to initialize the HTML list #}
+
+{% if loop.first %}
+<hr />
+        <ul>
+{% endif %}
+
+{# Now we want to output summary information for each page #}
+            <li>
+                <h4><a href="{{ SITEURL }}/{{ mypage.save_as }}" rel="bookmark"
+                    title="Permalink to {{ mypage.title|striptags }}">
+                {{ mypage.title }}</a></h4>
+                {# We print out the most recent date: published, accepted, submitted #}
+                {% if mypage.date %} 
+                    <strong>Publication Date</strong>: {{ mypage.date.strftime("%b %d, %Y") }}
+                {% endif %}
+                {{ mypage.summary }}
+            </li>
+            
+{# Now close HTML list #}
+
+{% if loop.last %}
+        </ul>
+{% endif %}
+
+{% endfor %}
+
+{{ super() }}
+
+{% endblock content %}
+

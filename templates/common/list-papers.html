@@ -25,8 +25,23 @@ page has Type: papers
                 <h4><a href="{{ SITEURL }}/{{ mypage.save_as }}" rel="bookmark"
                     title="Permalink to {{ mypage.title|striptags }}">
                 {{ mypage.title }}</a></h4>
-                {% if mypage.sdate %}
-                <em>Submitted</em>: {{ mypage.sdate | lcdmDateFormat }}
+                {# We print out the most recent date: published, accepted, submitted #}
+                {% if mypage.pdate %} 
+                    {% set mydate = mypage.pdate | lcdmDateFormat %}
+                    {% set myheader = "Published" %}
+                {% else %}
+                    {% if mypage.adate %} 
+                        {% set mydate = mypage.adate | lcdmDateFormat %}
+                        {% set myheader = "Accepted" %}
+                    {% else %}
+                        {% if mypage.sdate %} 
+                            {% set mydate = mypage.sdate | lcdmDateFormat %}
+                            {% set myheader = "Submitted" %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if mydate %}
+                <em>{{ myheader }}</em>: {{ mydate }}
                 {% endif %}
                 {{ mypage.summary }}
             </li>
