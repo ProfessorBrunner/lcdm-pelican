@@ -1,0 +1,47 @@
+{% set mytitle = "Experimental Project Division" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>LCDM-X: Experimental Projects</h2>
+
+The following list of projects are highly experimental with a suitably
+high potential for success or failure. Additional projects are
+constantly being added, and new ideas are being accepted, so feel free
+to propose something new. 
+
+<p/> General areas of interest include image processing, Bayesian
+modeling, computer vision, cloud computing, machine learning, and
+crowdsourcing.
+
+<p/> Interested graduate or undergraduate students should contact
+Professor Brunner directly.
+
+{% for mypage in pages|sort(reverse=True) if mypage.type == 'xproject' %}
+
+{# We need to initialize the HTML list #}
+
+{% if loop.first %}
+<hr />
+        <ul>
+{% endif %}
+
+{# Now we want to output summary information for each page #}
+            <li>
+                <h4><a href="{{ SITEURL }}/{{ mypage.save_as }}" rel="bookmark"
+                    title="Permalink to {{ mypage.title|striptags }}">
+                {{ mypage.title }}</a></h4>
+                {{ mypage.summary }}
+            </li>
+            
+{# Now close HTML list #}
+
+{% if loop.last %}
+        </ul>
+{% endif %}
+
+{% endfor %}
+
+{{ super() }}
+
+{% endblock content %}
