@@ -17,6 +17,32 @@ crowdsourcing.
 <p/> Interested graduate or undergraduate students should contact
 Professor Brunner directly.
 
+{% for mypage in pages|sort(reverse=True) if mypage.type == 'xproject-hot' %}
+
+{# We need to initialize the HTML list #}
+
+{% if loop.first %}
+<hr />
+<h3>Hot Projects</h3>
+        <ul>
+{% endif %}
+
+{# Now we want to output summary information for each page #}
+            <li>
+                <h4><a href="{{ SITEURL }}/{{ mypage.save_as }}" rel="bookmark"
+                    title="Permalink to {{ mypage.title|striptags }}">
+                {{ mypage.title }}</a></h4>
+                {{ mypage.summary }}
+            </li>
+            
+{# Now close HTML list #}
+
+{% if loop.last %}
+        </ul>
+{% endif %}
+
+{% endfor %}
+
 {% for mypage in pages|sort(reverse=True) if mypage.type == 'xproject' %}
 
 {# We need to initialize the HTML list #}
